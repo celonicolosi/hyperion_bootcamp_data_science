@@ -1,38 +1,61 @@
-# Create a simple calculator application that asks a user to enter two numbers and the operation (e.g. +, -, x, etc.)
-# that they’d like to perform on the numbers. Display the answer to the equation. Every equation entered by the user
-# should be written to a text file.
-# Use defensive programming to write this program in a manner that is robust and handles unexpected events and user inputs.
-
 import operator
 
 operations = {
-    '+': operator.add,
-    '-': operator.sub,
-    '*': operator.mul,
-    '/': operator.truediv,
-    '%': operator.mod,
-    '^': operator.pow
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "/": operator.truediv,
+    "%": operator.mod,
+    "**": operator.pow,
 }
-print("Welcome to the CALCULATOR!")
 
-while True:
-    try:
-        num1 = float(input("\nEnter the FIRST number: "))
-        num2 = float(input("\nEnter the SECOND number: "))
-        operation = input("\nEnter the OPERATION (+, -, *, /, %, ^): ")
-        assert operation in operations
-        break
-    except ValueError:
-        print("Invalid number. Please enter a valid number.\n")
-    except AssertionError:
-        print("Invalid operation. Please enter a valid operation.\n")
-    
-# perform the calculation
-result = operations[operation](num1, num2)
+print("\nWelcome to the CALCULATOR program. Choose:\n")
+print("1 - To use the Calculator")
+print("2 - To read all of the equations from a new .txt file\n")
+choice = int(input("What do you want to do?: "))
 
-# display the result
-print("\nResult: ", result)
+if choice == 1:
+    print("\nYou have chosen to use the Calculator!")
+    while True:
+        try:
+            num1 = float(input("\nEnter the FIRST number: "))
+            num2 = float(input("\nEnter the SECOND number: "))
+            operation = input("\nEnter the OPERATION (+, -, *, /, %, **): ")
+            assert operation in operations
+            break
+        except ValueError:
+            print("Invalid number. Please enter a valid number.\n")
+        except AssertionError:
+            print("Invalid operation. Please enter a valid operation.\n")
 
-# write the equation to a text file
-with open("results.txt", "w") as f:
-    f.write(f"{num1} {operation} {num2} = {result}\n")
+    # perform the calculation
+    result = operations[operation](num1, num2)
+
+    # display the result
+    print("\nResult: ", result)
+
+    # write the equation to a text file. I added the T09/ to save the file in the T09 folder.
+    # Without the T09 it would save the file in the rood directory of the project.
+    with open("T09/results.txt", "a") as f:
+        f.write(f"{num1} {operation} {num2} = {result}\n")
+
+elif choice == 2:
+    print("\nYou have chosen to read all of the equations from a new .txt file!")
+    while True:
+        try:
+            # Same as above, I added the T09/ to looks for the file in the T09 folder instead of the root directory.
+            file_name = input("\nEnter the name of the .txt file: ")
+
+            with open("T09/"+file_name, "r") as file:
+                for line in file:
+                    # I learned about and how to use eval() here:
+                    # https://www.youtube.com/watch?v=XAYrmGc4ZYM&t=105s&ab_channel=StudySession
+                    print(line.strip("\n") + " = " + str(eval(line)))
+            break
+        # Use defensive coding to ensure that the program does not crash if the file does not exist
+        # and that the user is prompted again to enter the name of the file.
+        except FileNotFoundError:
+            print("File not found. Please enter a valid file name.")
+
+else:
+    print("Invalid choice")
