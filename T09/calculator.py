@@ -9,10 +9,20 @@ operations = {
     "**": operator.pow,
 }
 
-print("\nWelcome to the CALCULATOR program. Choose:\n")
-print("1 - To use the Calculator")
-print("2 - To read all of the equations from a new .txt file\n")
-choice = int(input("What do you want to do?: "))
+print("\nWelcome to the CALCULATOR program. Choose:")
+
+# The task doesn't ask defensive coding for the choice, but I added it anyway.
+while True:
+    try:
+        print("\n1 - To use the Calculator")
+        print("2 - To read all of the equations from a new .txt file\n")
+        choice = int(input("What do you want to do?: "))
+        assert choice in [1, 2]
+        break
+    except AssertionError:
+        print("Invalid choice! Please enter a valid choice (1 or 2 only).\n")
+    except ValueError:
+        print("Invalid choice! Text not permited! Please enter a valid choice (1 or 2 only).\n")
 
 if choice == 1:
     print("\nYou have chosen to use the Calculator!")
@@ -39,23 +49,19 @@ if choice == 1:
     with open("T09/results.txt", "a") as f:
         f.write(f"{num1} {operation} {num2} = {result}\n")
 
-elif choice == 2:
+else:
     print("\nYou have chosen to read all of the equations from a new .txt file!")
     while True:
         try:
             # Same as above, I added the T09/ to looks for the file in the T09 folder instead of the root directory.
             file_name = input("\nEnter the name of the .txt file: ")
 
+            # the file with a list of equations to read is equations.txt
             with open("T09/"+file_name, "r") as file:
                 for line in file:
                     # I learned about and how to use eval() here:
                     # https://www.youtube.com/watch?v=XAYrmGc4ZYM&t=105s&ab_channel=StudySession
                     print(line.strip("\n") + " = " + str(eval(line)))
             break
-        # Use defensive coding to ensure that the program does not crash if the file does not exist
-        # and that the user is prompted again to enter the name of the file.
         except FileNotFoundError:
             print("File not found. Please enter a valid file name.")
-
-else:
-    print("Invalid choice")
