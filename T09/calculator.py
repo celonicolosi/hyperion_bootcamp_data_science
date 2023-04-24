@@ -33,21 +33,28 @@ if choice == 1:
             operation = input("\nEnter the OPERATION (+, -, *, /, %, **): ")
             assert operation in operations
             break
+
         except ValueError:
             print("Invalid number. Please enter a valid number.\n")
+
         except AssertionError:
             print("Invalid operation. Please enter a valid operation.\n")
 
     # perform the calculation
-    result = operations[operation](num1, num2)
+    try:
+        result = operations[operation](num1, num2)
 
-    # display the result
-    print("\nResult: ", result)
+        # display the result
+        print("\nResult: ", result)
 
-    # write the equation to a text file. I added the T09/ to save the file in the T09 folder.
-    # Without the T09 it would save the file in the rood directory of the project.
-    with open("T09/results.txt", "a") as f:
-        f.write(f"{num1} {operation} {num2} = {result}\n")
+        # write the equation to a text file. I added the T09/ to save the file in the T09 folder.
+        # Without the T09 it would save the file in the rood directory of the project.
+        with open("T09/results.txt", "a") as f:
+            f.write(f"{num1} {operation} {num2} = {result}\n")
+
+    except ZeroDivisionError:
+        print("\nYOU CAN'T DIVIDE BY ZERO!\n")
+        
 
 else:
     print("\nYou have chosen to read all of the equations from a new .txt file!")
@@ -59,9 +66,13 @@ else:
             # the file with a list of equations to read is equations.txt
             with open("T09/"+file_name, "r") as file:
                 for line in file:
-                    # I learned about and how to use eval() here:
-                    # https://www.youtube.com/watch?v=XAYrmGc4ZYM&t=105s&ab_channel=StudySession
-                    print(line.strip("\n") + " = " + str(eval(line)))
+                    try:
+                        # I learned about and how to use eval() here:
+                        # https://www.youtube.com/watch?v=XAYrmGc4ZYM&t=105s&ab_channel=StudySession
+                        print(line.strip("\n") + " = " + str(eval(line)))
+
+                    except ZeroDivisionError:
+                        print("\nYOU CAN'T DIVIDE BY ZERO!\n")
             break
         except FileNotFoundError:
             print("File not found. Please enter a valid file name.")
