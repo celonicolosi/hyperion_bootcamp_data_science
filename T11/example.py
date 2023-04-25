@@ -10,7 +10,7 @@
 
 # ************ Example 1 ************
 # Recap on slicing strings
-print("Example 1: ")
+print("\nExample 1: ")
 
 string = 'Hello world!'
 fizz = string[0:5]
@@ -22,7 +22,7 @@ print(fizz)
 
 
 # ************ Example 2 ************
-print("Example 2: ")
+print("\nExample 2: ")
 
 fact1 = "The original name of windows was Interface Manager."
 fact1 = fact1.upper()
@@ -31,7 +31,7 @@ fact1 = fact1.lower()
 print(fact1)
 
 # ************ Example 3 ************
-print("Example 3: ")
+print("\nExample 3: ")
 
 sentence = "ThisHELLOisHELLOrandomHELLOtextHELLOweHELLOareHELLOgoingHELLOtoHELLOsplitHELLOapart"
 split_sentence = sentence.split("HELLO")
@@ -40,7 +40,7 @@ print(split_sentence)
 # Notice how a list is printed out?
 
 # ************ Example 4 ************
-print("Example 4: ")
+print("\nExample 4: ")
 
 fact2 = "          The$first$electronic$computer$ENIAC$weighed$more$than$27$tons.          "
 fact2 = fact2.replace("$", "WOW!")
@@ -51,7 +51,7 @@ fact2 = fact2.split("WOW!")
 print(fact2)
 
 # ************ Example 5 ************
-print("Example 5: ")
+print("\nExample 5: ")
 string_list = ["I", "like", "to", "join", "lists", "to", "make", "strings"]
 list_joined = " ".join(string_list)
 print(list_joined)
@@ -62,20 +62,20 @@ print(list_joined)
 # The backslash together with certain other characters are know as escape sequences.
 
 # ************ Example 6 ************
-print("Example 6: ")
+print("\nExample 6: ")
 people = "Person 1 \nPerson 2"
 print(people)
 # Notice the line break between the two words. The \n character is invisible -- it's a command to insert a new line.
 
 
 # ************ Example 7 ************
-print("Example 7: ")
+print("\nExample 7: ")
 wage = "Person 1: \t R123.22"
 print(wage)
 # Notice the tab between the two words. The \t character is invisible -- it's a command to insert a new tab space.
 
 # ************ Example 8 ************
-print("Example 8: ")
+print("\nExample 8: ")
 sentence = "\"The escape character (\\) is a character which invokes an alternative interpretation on subsequent characters in a character sequence.\""
 print(sentence)
 # Notice that the quotation marks and backslash are printed out as part of the string.
