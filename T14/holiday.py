@@ -24,7 +24,7 @@ def hotel_cost(num_nights):
 # This function will take the city_flight as an argument and return a cost for
 # the flight
 def plane_cost(city_flight):
-    return cities[city_flight]
+    return flights[city_flight]
 
 # This function will take the rental_days as an argument and return the total
 # cost of the car rental
@@ -32,18 +32,18 @@ def car_rental(rental_days):
     # it even give discount to the user if they hire the car for more than
     # 3 days or 7 days
     if rental_days >= 7:
-        return (rental_days * 40) - 50
+        return (rental_days * 45) - 50
     elif rental_days >= 3:
-        return (rental_days * 40) - 20
+        return (rental_days * 45) - 20
     else:
-        return rental_days * 40
+        return rental_days * 45
     
 def holiday_cost(hotel_cost, plane_cost, car_rental):
     return hotel_cost + plane_cost + car_rental
 
 # create a dictionary of cities and their flight costs (best option for direct
 # flights, Economy class, from London, based on Skyscanner)
-cities = {
+flights = {
     "Rio De Janeiro": 1000,
     "Lisbon": 115,
     "New York": 480,
@@ -88,11 +88,6 @@ while True:
 # get the user's choice of nights to stay in a hotel while treating errors
 num_nights = is_valid_number("\nHow many nights will you be staying in a hotel for: ")
 rental_days = is_valid_number("\nHow many days will you be hiring a car for: ")
-
-print("\nResults:\n")
-print(city_flight)
-print(num_nights)
-print(rental_days)
 
 # split the print in more lines to make it more readable respecting the 79
 # characters per line rule (yeah, I know that some lines above are more than!)
