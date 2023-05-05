@@ -7,11 +7,13 @@ def is_valid_number(message):
     while True:
         try:
             number = int(input(message))
-            assert number > 0
+            # greater than or equal to 0 just in case the user don't want to
+            # stay in a hotel or hire a car
+            assert number >= 0
             return number
         
         except AssertionError:
-            print("\nINVALID CHOICE! Please enter a valid number. (Positive numbers)\n")
+            print("\nINVALID CHOICE! Please enter a valid number.\n")
     
         except ValueError:
             print("\nINVALID CHOICE! Please enter only numbers.\n")
