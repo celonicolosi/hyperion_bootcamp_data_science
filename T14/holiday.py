@@ -72,14 +72,14 @@ print("\nWelcome to the Holiday Planner!\n")
 
 # presenting the user a list of cities to choose to fly to
 print("Here are the cities you can fly to:\n")
-for city in cities:
+for city in flights:
     print("- " + city)
 
 # get the user's choice of city to fly to while treating errors
 while True:
     try:
         city_flight = input("\nWhich city would you like to fly to: ").title()
-        assert city_flight in cities
+        assert city_flight in flights
         break
 
     except AssertionError:
