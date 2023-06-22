@@ -1,1 +1,10 @@
+Link to my profile:
 https://github.com/celonicolosi
+
+Message to reviewer:
+I've been using git in my jobs and I've been pushing the tasks to this repository almost since the beginning of the BootCamp,
+but it was private before. So now I changed this repository to public so you, the reviewer, can see the github.txt in the
+Task 24 folder.
+
+link to the folder directly: https://github.com/celonicolosi/hyperion_bootcamp_data_science/tree/d7bab0eb56643cd24850616ec0235c8712e391b3/T24
+
