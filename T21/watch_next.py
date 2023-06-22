@@ -26,27 +26,10 @@ def watch_next(movie, movie_list):
         # print(f"{token} : {token.similarity(movie_doc)}") # Uncomment this line if you want to see the similarity scores
     
     # sort the dictionary by the values
-    print(similar_movies)
     sorted_movies = sorted(similar_movies.items(), key=lambda x: x[1], reverse=True)
 
-    # print the films with similarity scores above 0.8
+    # print the film with the highest similarity score
     print("\nBECAUSE YOU WATCHED PLANET HULK:\n")
-    
-    for movie, score in sorted_movies:
-        if score > 0.8:
-            # printing only the movie name without the similarity score because in theory that means nothing to the user
-            print(f"- {movie}")
+    print(sorted_movies[0][0])
 
 watch_next(planet_hulk, movies)
-
-# There is a commented line in the for loop if you want to see the similarity scores but in resume is this:
-# Movie A : 0.7771752937723543
-# Movie B : 0.7487075237236891
-# Movie C : 0.8866717596279875
-# Movie D : 0.3764830873071832
-# Movie E : 0.6708372537042129
-# Movie F : 0.8753508543471434
-# Movie G : 0.8777585723496374
-# Movie H : 0.7977046189736419
-# Movie I : 0.8196949673276563
-# Movie J : 0.6989104466560989
